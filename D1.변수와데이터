@@ -1,0 +1,32 @@
+#환자 기본정보 저장 및 계산하기
+
+# 현재 연도 자동 계산
+
+from datetime import datetime
+
+current_year = datetime.now().year
+
+print(current_year)
+
+# 1. 환자 기본정보 저장
+patient_name="박건강"
+birth_year=1990
+height = 170
+weight = 65
+sex = "남성"
+
+# 2. BMI 계산
+bmi= weight/((height/100)**2)
+
+# 3. 현재 나이 계산
+age= current_year - birth_year
+
+# 4. 성인 여부 판별
+adult=(age>=18)
+
+# 5. 결과 출력
+print('이름 :', patient_name, '(',sex, age,')')
+print(f"키: {height}cm, 몸무게:{weight}kg")
+print(f"BMI: {bmi:.1f}")
+print(f"출생연도: {birth_year}년")
+print(f"성인여부: {adult}")
