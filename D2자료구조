@@ -1,0 +1,63 @@
+병원 환자 데이터베이스 관리
+병원에서 제공하는 기본 환자 데이터베이스를 활용하여 환자 정보를 조회, 수정, 추가, 삭제하는 프로그램을 작성
+
+
+patients_db = [
+    {"patient_id": "P001", "name": "김환자", "age": 65, "department": "내과", "disease": "고혈압"},
+    {"patient_id": "P002", "name": "이환자", "age": 45, "department": "외과", "disease": "맹장염"},
+    {"patient_id": "P003", "name": "박환자", "age": 32, "department": "소아과", "disease": "감기"}
+]
+
+# 여기에 코드를 작성하세요
+# 1. 첫 번째 환자 정보 조회
+first=patients_db[0]
+print("=== 첫 번째 환자 정보 ===")
+print(f"환자번호:{first.get('patient_id')}")
+print(f"이름:{first.get('name')}")
+print(f"나이:{first.get('age')}세")
+print(f"진료과:{first.get('department')}")
+print(f"질병:{first.get('disease')}")
+# 2. 두 번째 환자 질병 수정
+second=patients_db[1]
+print("\n=== 환자 질병 수정 전 ===")
+print(f"환자번호:{second.get('patient_id')}")
+print(f"이름:{second.get('age')}세")
+print(f"기존 질병:{second.get('disease')}")
+
+second.update({"disease" : "급성맹장염"})
+print("\n=== 환자 질병 수정 후 ===")
+print(f"환자번호:{second.get('patient_id')}")
+print(f"이름:{second.get('age')}세")
+print(f"수정된 질병:{second.get('disease')}")
+
+# 3. 새 환자 등록 및 데이터베이스에서 조회
+new = {"patient_id": "P004", "name": "홍환자", "age": 40, "department": "피부과", "disease": "아토피"}
+patients_db.append(new)
+newp=patients_db[-1]
+
+print("\n=== 새 환자 등록 ===")
+print(f"환자번호:{newp.get('patient_id')}")
+print(f"이름:{newp.get('patient_id')}")
+print(f"나이:{newp.get('age')}세")
+print(f"진료과:{newp.get('department')}")
+print(f"질병:{newp.get('disease')}")
+print(f"현재 총 환자수:{len(patients_db)}명")
+# 4. 환자 퇴원 처리
+print("\n=== 환자 퇴원 처리 ===")
+del_patient=patients_db.pop(-1)
+print(f"퇴원 환자번호:{del_patient.get('patient_id')}")
+print(f"퇴원 환자명:{del_patient.get('name')}")
+print(f"퇴원 후 총 환자수:{len(patients_db)}명")
+
+# 5. 나이 통계 계산
+ages={patients_db[0].get('age'),patients_db[1].get('age'),patients_db[2].get('age')}
+print("\n=== 환자 나이 통계 ===")
+print(f"최고령 환자 나이:{max(ages)}세")
+print(f"최연소 환자 나이:{min(ages)}세")
+print(f"평균 환자 나이:{sum(ages)/len(ages)}세")
+# 6. 최종 현황 출력
+print("\n==================================================")
+
+print("\n최종 병원 환자 데이터베이스 현황")
+print("\n==================================================")
+print(f"총 입원 환자:{len(patients_db)}명")
